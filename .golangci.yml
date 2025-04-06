@@ -1,0 +1,45 @@
+linters-settings:
+  gosimple:
+    checks: ["all"]
+  govet:
+    check-shadowing: true
+  gocyclo:
+    min-complexity: 15
+  dupl:
+    threshold: 100
+  goconst:
+    min-len: 2
+    min-occurrences: 2
+  misspell:
+    locale: US
+
+linters:
+  enable:
+    - gosimple
+    - govet
+    - gocyclo
+    - dupl
+    - goconst
+    - misspell
+    - gofmt
+    - goimports
+    - errcheck
+    - ineffassign
+    - staticcheck
+    - typecheck
+    - unused
+    - gosec
+
+run:
+  skip-dirs:
+    - vendor
+  deadline: 5m
+  tests: true
+
+issues:
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - gocyclo
+        - dupl
+        - gosec 
